@@ -8,3 +8,10 @@ This is a very simple application concentrating to use appsink and appsrc by con
   - receive data from GStreamer
   - modify data by user defined callback function
   - push data to GStreamer
+
+## Acknowlegements
+
+- [Video Data Modification in Gstreamer Application](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/81231874/Video+Data+Modification+in+Gstreamer+Application)
+- [Short-cutting the pipeline](https://gstreamer.freedesktop.org/documentation/tutorials/basic/short-cutting-the-pipeline.html)
+- [Pipeline manipulation](https://gstreamer.freedesktop.org/documentation/application-development/advanced/pipeline-manipulation.html)
+- [appsink-src.c](https://github.com/GStreamer/gst-plugins-base/blob/master/tests/examples/app/appsink-src.c)
