@@ -13,15 +13,15 @@ add_definitions(-Wall -Wextra -Wno-unused-parameter -O2 -g)
 option(DEBUG_MODE "Enable debug output" OFF)
 
 # set cmake modules
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 set(CMAKE_SYSROOT
     $ENV{SDKTARGETSYSROOT}
     CACHE PATH "Path to sysroot")
 # set (CMAKE_SKIP_RPATH true CACHE INTERNAL "")
 
 # find dependencies
-find_package(GStreamer REQUIRED)
-find_package(GLIB REQUIRED)
+find_package(GStreamer COMPONENTS app)
+find_package(GLIB2)
 find_package(OpenCV REQUIRED)
 
 # find all source files
@@ -29,11 +29,11 @@ file(GLOB_RECURSE src_files ${PROJECT_SOURCE_DIR}/src/*.cc
      ${PROJECT_SOURCE_DIR}/src/*/*.cc)
 
 # add common library
-include_directories(include)
+include_directories(include ${GLIB2_INCLUDE_DIRS} ${GSTREAMER_INCLUDE_DIRS}
+                    ${GSTREAMER_APP_INCLUDE_DIRS} ${OPENCV_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${src_files})
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${GSTREAMER_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ${GSTREAMER_LIBRARIES} ${OpenCV_LIBS})
+target_link_libraries(${PROJECT_NAME} ${GLIB2_LIBRARIES} ${GSTREAMER_LIBRARIES}
+                      ${GSTREAMER_APP_LIBRARIES} ${OpenCV_LIBS})
 
 # add executables with project library
 macro(add_simple_app name)
