@@ -1,6 +1,14 @@
 # gst-snoop-pipe
 
-This is a very simple application concentrating to use appsink and appsrc by constructing a pipeline to generate video, stream it into an application's code, modify the data and then stream it back into your video output device i.e filesrc.  
+This is a very simple application of building a GStreamer pipeline using `appsink` and `appsrc`, which generates video, streams it to the application's code, modifies the data, and then streams it back to your video output device i.e. filesrc.
+
+## Prerequisites
+
+- CMake 2.8.9 or later
+- GStreamer 1.0.0 or later (e.g., `libgstreamer1.0-dev`)
+- GStreamer plugins 1.0.0 or later (e.g., `libgstreamer-plugins-base1.0-dev`)
+- Glib / GObject (e.g., `libglib2.0-dev`)
+- (optional) OpenCV
 
 ## Examples
 
